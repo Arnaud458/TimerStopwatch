@@ -70,7 +70,9 @@ public class TestScenarios {
 	  assertSame(LaptimeStopwatch.Instance(), c.currentState);
 	  assertEquals("value of totalTime ", 2, AbstractStopwatch.getTotalTime());
 	  assertEquals("value of lapTime ", 1, AbstractStopwatch.getLapTime());
-	  
+
+	  c.up();
+	  c.tick();
 	  c.left(); // go back to timer mode (remembering history state)
 	  c.tick();
 	  assertSame(PausedTimer.Instance(), c.currentState);
