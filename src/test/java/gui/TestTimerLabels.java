@@ -1,11 +1,8 @@
 package gui;
 
-import static org.junit.Assert.*;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import states.timer.*;
-
-import org.junit.*;
 
 public class TestTimerLabels extends TestGUIAbstract {
 
@@ -13,77 +10,77 @@ public class TestTimerLabels extends TestGUIAbstract {
 	public void testIdleTimerLabels() {
 		c.currentState = IdleTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state IdleTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state IdleTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state IdleTimer ", g.b3.getText(),c.getRightText());
+		Assertions.assertEquals(g.b1.getText(), c.getLeftText(), "button 1 for state IdleTimer ");
+		Assertions.assertEquals(g.b2.getText(), c.getUpText(), "button 2 for state IdleTimer ");
+		Assertions.assertEquals(g.b3.getText(), c.getRightText(), "button 3 for state IdleTimer ");
 	}
 	
 	@org.junit.jupiter.api.Test
 	public void testPausedTimerLabels() {
 		c.currentState = PausedTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state PausedTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state IdleTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state IdleTimer ", g.b3.getText(),c.getRightText());
+		Assertions.assertEquals(g.b1.getText(), c.getLeftText(), "button 1 for state PausedTimer ");
+		Assertions.assertEquals(g.b2.getText(), c.getUpText(), "button 2 for state IdleTimer ");
+		Assertions.assertEquals(g.b3.getText(), c.getRightText(), "button 3 for state IdleTimer ");
 	}
 	
 	@org.junit.jupiter.api.Test
 	public void testRingingTimerLabels() {
 		c.currentState = RingingTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state RingingTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state RingingTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state RingingTimer ", g.b3.getText(),c.getRightText());
+		Assertions.assertEquals(g.b1.getText(), c.getLeftText(), "button 1 for state RingingTimer ");
+		Assertions.assertEquals(g.b2.getText(), c.getUpText(), "button 2 for state RingingTimer ");
+		Assertions.assertEquals(g.b3.getText(), c.getRightText(), "button 3 for state RingingTimer ");
 	}
 	
 	@Test
 	public void testRunningTimerLabels() {
 		c.currentState = RunningTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state RunningTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state RunningTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state RunningTimer ", g.b3.getText(),c.getRightText());
+		Assertions.assertEquals(g.b1.getText(), c.getLeftText(), "button 1 for state RunningTimer ");
+		Assertions.assertEquals(g.b2.getText(), c.getUpText(), "button 2 for state RunningTimer ");
+		Assertions.assertEquals(g.b3.getText(), c.getRightText(), "button 3 for state RunningTimer ");
 	}
 	
 	@org.junit.jupiter.api.Test
 	public void testSetTimerLabels() {
 		c.currentState = SetTimer.Instance();
 		g.updateUI(c);
-		assertEquals("button 1 for state SetTimer ", g.b1.getText(),c.getLeftText());
-		assertEquals("button 2 for state SetTimer ", g.b2.getText(),c.getUpText());
-		assertEquals("button 3 for state SetTimer ", g.b3.getText(),c.getRightText());
+		Assertions.assertEquals(g.b1.getText(), c.getLeftText(), "button 1 for state SetTimer ");
+		Assertions.assertEquals(g.b2.getText(), c.getUpText(), "button 2 for state SetTimer ");
+		Assertions.assertEquals(g.b3.getText(), c.getRightText(), "button 3 for state SetTimer ");
 	}
 	
 	   @org.junit.jupiter.api.Test
 	    public void testTimerButtonLabels1() {
 	    	g.updateUI(c);
-	    	assertEquals("change mode",g.b1.getText());
-	    	assertEquals("run",g.b2.getText());
-	    	assertEquals("set",g.b3.getText());    	
-	    	assertEquals("IdleTimer",g.myText3.getText());
-	    	assertEquals("timer",g.myText2.getText());
-	    	assertEquals("memTimer = 0",g.myText1.getText());
+	    	Assertions.assertEquals("change mode", g.b1.getText());
+	    	Assertions.assertEquals("run", g.b2.getText());
+	    	Assertions.assertEquals("set", g.b3.getText());
+	    	Assertions.assertEquals("IdleTimer", g.myText3.getText());
+	    	Assertions.assertEquals("timer", g.myText2.getText());
+	    	Assertions.assertEquals("memTimer = 0", g.myText1.getText());
 	    }
 
 	    @org.junit.jupiter.api.Test
 	    public void testTimerButtonLabels2() {
 	    	c.right(); //simulate clicking on the left button
 	    	g.updateUI(c); //apply the effect on the user interface
-	    	assertEquals("reset",g.b1.getText());     
-	    	assertEquals("inc 5",g.b2.getText());
-	    	assertEquals("done",g.b3.getText());
-	    	assertEquals("SetTimer",g.myText3.getText());    	
-	    	assertEquals("timer",g.myText2.getText());
-	    	assertEquals("memTimer = 0",g.myText1.getText());
+	    	Assertions.assertEquals("reset", g.b1.getText());
+	    	Assertions.assertEquals("inc 5", g.b2.getText());
+	    	Assertions.assertEquals("done", g.b3.getText());
+	    	Assertions.assertEquals("SetTimer", g.myText3.getText());
+	    	Assertions.assertEquals("timer", g.myText2.getText());
+	    	Assertions.assertEquals("memTimer = 0", g.myText1.getText());
 	    }
 
 	    @org.junit.jupiter.api.Test
 	    public void testStopwatchButtonLabels1() {
 	    	c.left(); //simulate clicking on the left button
 	    	g.updateUI(c); //apply the effect on the user interface
-	    	assertEquals("change mode",g.b1.getText());     
-	    	assertEquals("run",g.b2.getText());
-	    	assertEquals("(unused)",g.b3.getText());
+	    	Assertions.assertEquals("change mode", g.b1.getText());
+	    	Assertions.assertEquals("run", g.b2.getText());
+	    	Assertions.assertEquals("(unused)", g.b3.getText());
 	    }
 
 	    @org.junit.jupiter.api.Test
@@ -91,9 +88,9 @@ public class TestTimerLabels extends TestGUIAbstract {
 	    	c.left(); //simulate clicking on the left button
 	    	c.up(); //simulate clicking on the right button
 	    	g.updateUI(c); //apply the effect on the user interface
-	    	assertEquals("change mode",g.b1.getText());     
-	    	assertEquals("split",g.b2.getText());
-	    	assertEquals("reset",g.b3.getText());
+	    	Assertions.assertEquals("change mode", g.b1.getText());
+	    	Assertions.assertEquals("split", g.b2.getText());
+	    	Assertions.assertEquals("reset", g.b3.getText());
 	    }
 
 

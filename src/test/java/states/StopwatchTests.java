@@ -1,13 +1,11 @@
 package states;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import states.stopwatch.AbstractStopwatch;
 import states.stopwatch.ResetStopwatch;
 import states.timer.AbstractTimer;
-import org.junit.*;
-
-import static org.junit.Assert.*;
 
 public class StopwatchTests {
 
@@ -30,16 +28,16 @@ public class StopwatchTests {
 		 */
 		current = context.currentState;
 		
-	    assertEquals(Mode.stopwatch, current.getMode());
-	    assertSame(ResetStopwatch.Instance(), current);
-	    assertEquals("For the value of totalTime we ",0, AbstractStopwatch.getTotalTime());
-	    assertEquals("For the value of lapTime we ",0, AbstractStopwatch.getLapTime());
+	    Assertions.assertEquals(Mode.stopwatch, current.getMode());
+	    Assertions.assertSame(ResetStopwatch.Instance(), current);
+	    Assertions.assertEquals(0, AbstractStopwatch.getTotalTime(), "For the value of totalTime we ");
+	    Assertions.assertEquals(0, AbstractStopwatch.getLapTime(), "For the value of lapTime we ");
 	}
 
 	@org.junit.jupiter.api.Test
 	public void testInitialAbstractStopwatch() {
 		// The initial state of composite state AbstractStopwatch should be ResetStopwatch
-		assertSame(AbstractStopwatch.Instance(), ResetStopwatch.Instance());
+		Assertions.assertSame(AbstractStopwatch.Instance(), ResetStopwatch.Instance());
 	}
 	
 	@org.junit.jupiter.api.Test
@@ -47,11 +45,11 @@ public class StopwatchTests {
 		current = AbstractStopwatch.Instance();
 		// after processing the left() event, we should arrive in the initial state of AbstractStopwatch
 		ClockState newState = current.left();
-		assertEquals(AbstractTimer.Instance(), newState);
+		Assertions.assertEquals(AbstractTimer.Instance(), newState);
 		/* after another occurrence of the left() event, we should return to the original state
 		 * because we used history states		
 		 */
-		assertEquals(current, newState.left());
+		Assertions.assertEquals(current, newState.left());
 	}
 
 }

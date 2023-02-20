@@ -1,13 +1,11 @@
 package states;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import states.timer.AbstractTimer;
 import states.timer.IdleTimer;
 import states.timer.SetTimer;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 
 public class IdleTest {
 
@@ -26,7 +24,7 @@ public class IdleTest {
 	public void testSingletonDP() {
 		// the initial state of the statechart should be an IdleTimer object
 		// that is exactly the same object as the "singleton" instance of the IdleTimer state
-		assertSame(IdleTimer.Instance(),context.currentState);
+		Assertions.assertSame(IdleTimer.Instance(), context.currentState);
 	}
 
 	@Test
@@ -34,9 +32,9 @@ public class IdleTest {
 		/* test whether the up event leaves us in the IdleTimer state.
 		   (upon creation of IdleTimer state, memTimer is initialised to 0,
 		   while memTimer > 0 in order to transition to ActiveTimer */
-		assertEquals("For the value of timer we ", 0, AbstractTimer.getTimer());
-		assertEquals("For the value of memTimer we ", 0, AbstractTimer.getMemTimer());
-		assertSame(context.currentState, context.currentState.up());		
+		Assertions.assertEquals(0, AbstractTimer.getTimer(), "For the value of timer we ");
+		Assertions.assertEquals(0, AbstractTimer.getMemTimer(), "For the value of memTimer we ");
+		Assertions.assertSame(context.currentState, context.currentState.up());
 	}
 
 	@org.junit.jupiter.api.Test
@@ -53,14 +51,14 @@ public class IdleTest {
 		context.right();
 		context.tick();
 		//check that value of memTimer is no longer 0 (value of timer is still 0)
-		assertEquals("For the value of timer we ", 0, AbstractTimer.getTimer());
-		assertEquals("For the value of timer we ", 1, AbstractTimer.getMemTimer());
+		Assertions.assertEquals(0, AbstractTimer.getTimer(), "For the value of timer we ");
+		Assertions.assertEquals(1, AbstractTimer.getMemTimer(), "For the value of timer we ");
 		}
 
 	@Test
 	public void testRight() {		
 		// test whether the right() event brings us to the SetTimer state
-		assertSame(SetTimer.Instance(), context.currentState.right());
+		Assertions.assertSame(SetTimer.Instance(), context.currentState.right());
 	}
 
 }

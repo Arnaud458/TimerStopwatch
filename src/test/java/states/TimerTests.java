@@ -1,13 +1,13 @@
 package states;
 
-import static org.junit.Assert.*;
-
-import org.junit.*;
-
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import states.timer.*;
 import states.stopwatch.AbstractStopwatch;
+import states.timer.AbstractTimer;
+import states.timer.ActiveTimer;
+import states.timer.IdleTimer;
+import states.timer.RunningTimer;
 
 public class TimerTests {
 
@@ -28,22 +28,22 @@ public class TimerTests {
 		 */
 		current = context.currentState;
 		
-	    assertEquals(Mode.timer, current.getMode());
-	    assertSame(IdleTimer.Instance(), current);
-	    assertEquals("For the value of timer we ", 0, AbstractTimer.getTimer());
-	    assertEquals("For the value of memTimer we ", 0, AbstractTimer.getMemTimer());
+	    Assertions.assertEquals(Mode.timer, current.getMode());
+	    Assertions.assertSame(IdleTimer.Instance(), current);
+	    Assertions.assertEquals(0, AbstractTimer.getTimer(), "For the value of timer we ");
+	    Assertions.assertEquals(0, AbstractTimer.getMemTimer(), "For the value of memTimer we ");
 	}
 	
 	@Test
 	public void testInitialAbstractTimer() {
 		// The initial state of composite state AbstractTimer should be IdleTimer
-		assertSame(AbstractTimer.Instance(), IdleTimer.Instance());
+		Assertions.assertSame(AbstractTimer.Instance(), IdleTimer.Instance());
 	}
 	
 	@org.junit.jupiter.api.Test
 	public void testInitialActiveTimer() {
 		// The initial state of composite state ActiveTimer should be RunningTimer
-		assertSame(ActiveTimer.Instance(), RunningTimer.Instance());
+		Assertions.assertSame(ActiveTimer.Instance(), RunningTimer.Instance());
 	}
 	
 	@org.junit.jupiter.api.Test
@@ -51,11 +51,11 @@ public class TimerTests {
 		current = AbstractTimer.Instance();
 		// after processing the left() event, we should arrive in the initial state of AbstractStopwatch
 		ClockState newState = current.left();
-		assertEquals(AbstractStopwatch.Instance(), newState);
+		Assertions.assertEquals(AbstractStopwatch.Instance(), newState);
 		/* after another occurrence of the left() event, we should return to the original state
 		 * because we used history states		
 		 */
-		assertEquals(current, newState.left());
+		Assertions.assertEquals(current, newState.left());
 	}
 
 }
