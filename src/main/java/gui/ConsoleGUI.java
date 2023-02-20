@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 // UNFINISHED WORK: THIS CLASS NEEDS TO BE REWRITTEN TO USE ANOTHER GUI
-// (NOT SWING, BUT DOING EVERYTHING DIRECTLY FROM THE CONSOLE.
+// NOT SWING, BUT DOING EVERYTHING DIRECTLY FROM THE CONSOLE.
 public class ConsoleGUI extends AbstractGUI {
     
     private JButton b1, b2, b3;
@@ -42,21 +42,9 @@ public class ConsoleGUI extends AbstractGUI {
     }
 
     protected void addEventListener() {
-        b1.addActionListener(new ActionListener() { 
-        	public void actionPerformed(ActionEvent e) {
-        		observer.left();
-                }
-        	});
-        b2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		observer.up();
-                }
-        	});
-        b3.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		observer.right();
-                }
-        	});
+        b1.addActionListener(e -> observer.left());
+        b2.addActionListener(e -> observer.up());
+        b3.addActionListener(e -> observer.right());
    }
     
     public void updateUI(Context c) {

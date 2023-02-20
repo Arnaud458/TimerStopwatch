@@ -1,19 +1,20 @@
 package states;
 
-import static org.junit.Assert.*;
-import states.Context;
-import states.timer.*;
-
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import states.timer.AbstractTimer;
+import states.timer.IdleTimer;
+import states.timer.SetTimer;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class IdleTest {
 
 	private Context context;
 	
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		// reset the initial values of timer to avoid inferences between different consecutive tests
 		context = new Context();
 		context.currentState = IdleTimer.Instance(); // because we are testing the IdleTimer state here...
